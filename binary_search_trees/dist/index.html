@@ -8,6 +8,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header><h1>Binary Search Tree</h1></header>
+
+    <div class="main">
+        <div class="content">
+            <div class="user-input-container">
+                <div class="info">
+                    <form>
+                        <div class="input-container">
+                            <label for="input-array">Enter Array:</label>
+                            <input type="text" placeholder="1, 2, 3, 5, 6, 7, 8, 9, 10">
+                        </div>
+                        <div class="insert-container">
+                            <label for="insert-num">Insert node (duplicates are ignored) </label>
+                            <input type="number">
+                            <button class="insert-btn btn" >Insert</button>
+                        </div>
+                        <div class="delete-container">
+                            <label for="delete-num">Delete node</label>
+                            <input type="number">
+                            <button class="insert-btn btn">Delete</button>
+                        </div>
+                        <div class="height-container">
+                            <label for="height">Find depth of node</label>
+                            <input type="number">
+                            <button class="height-btn btn">Search</button>
+                        </div>
+                        <div class="balance-container">
+                            <button class="balance-btn ">Re-Balance Tree</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="information-container">
+                <div class="info-header"><h2>Information</h2></div>
+                <div class="height">Height: </div>
+                <div class="breadth">Level Order: </div>
+                <div class="preorder">Pre-Order: </div>
+                <div class="inorder">In-Order:</div>
+                <div class="postorder">Post-Order:</div>
+            </div>
+        </div>
+        <pre class="tree"></pre>
+    </div>
+
+    <footer></footer>
 </body>
 </html>
