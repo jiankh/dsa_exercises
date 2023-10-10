@@ -14,7 +14,7 @@ class Node{
 class Tree {
   constructor(arr) {
     const sortedArray = [...new Set(arr)].sort((a, b) => a - b); //removes duplicates and sorts it
-    this.root = this.buildTree(sortedArray);
+    this.root = this.buildTree(sortedArray); //as soon as an obj is made w/ class Tree, will trigger buildTree()
   }
 
   buildTree(sortedArray) {
@@ -64,7 +64,118 @@ class Tree {
       }
     }
   }
+
+  findMinValueNode(node) {
+    let current = node;
+    while (current.left !== null) {
+        current = current.left;
+    }
+    return current;
+  }
+
+  deleteNode(root, k) {
+    // Base case, no root so no tree so nothing to delete
+    if (root === null) {
+      return root;
+    }
+   
+    // Recursive calls for ancestors, go thur the tree to find where data = k
+    if (root.data > k) {
+      root.left = this.deleteNode(root.left, k);
+      return root; //if it reaches null from line above then is not in this branch and return the original root
+    } else if (root.data < k) {
+      root.right = this.deleteNode(root.right, k);
+      return root;
+    }
+   
+    // We reach here when root is the node
+    // to be deleted. When the call gets here it means root.data = k
+   
+    // If one of the children is empty
+    if (root.left === null) {
+      return root.right //this will set the left/right of the node above level to this(Deleting the current node)(check the recursive call above this)
+    } else if (root.right === null) {
+      return root.left
+    }
+   
+    // If both children exist
+    // Node with two children, find the inorder successor (smallest in the right subtree)
+    let minValueNode = this.findMinValueNode(root.right);
+
+    // Copy the inorder successor's content to this node
+    root.data = minValueNode.data;
+
+    // Delete the inorder successor
+    root.right = this.deleteNode(root.right, minValueNode.data);
+
+    return root;
+   
+  
+  }
+
+  breadthFirstValues() {
+    const root = this.root
+    if (root === null) return [] //if no root then no tree then just return empty array
+
+    const values = [] //initialize a array to store final values
+    const queue =[root] //breadthfirst uses a queue system
+
+    while (queue.length > 0) {
+      const current = queue.shift() //shift takes the first index and returns it
+      values.push(current.data)
+
+      //we push the subtrees of the current node into the queue
+      if (current.left !== null) {queue.push(current.left)}
+      if (current.right !== null) {queue.push(current.right)}
+    }
+    return values
+  }
+
+  preorder(root=this.root) {
+    if (root === null)
+    return [];
+  
+    const leftValues = this.preorder(root.left);
+    const rightValues = this.preorder(root.right);
+    return [ root.data, ...leftValues, ...rightValues ];
+  }
+
+  inorder(root=this.root) {
+    if (root === null)
+    return [];
+  
+    const leftValues = this.inorder(root.left);
+    const rightValues = this.inorder(root.right);
+    return [ ...leftValues, root.data,  ...rightValues ];
+  }
+
+  postorder(root=this.root) {
+    if (root === null)
+    return [];
+  
+    const leftValues = this.postorder(root.left);
+    const rightValues = this.postorder(root.right);
+    return [ ...leftValues,  ...rightValues, root.data];
+  }
+  
 }
+
+function getHeight(node) {
+  if (node === null) {
+      return 0;
+  } else {
+      const leftHeight = getHeight(node.left);
+      const rightHeight = getHeight(node.right);
+      return Math.max(leftHeight, rightHeight) + 1;
+  }
+}
+
+
+
+
+
+
+
 
 const randomArray = (size) => {
     return Array.from({ length: size }, () => Math.floor(Math.random() * 100));
@@ -116,7 +227,16 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 const arr1 = [62, 8, 19, 92, 51, 52, 85, 28, 74, 0]
 console.log(arr1)
 const tree = new Tree(arr1)
-prettyPrint(tree.root)
-tree.insertNode(9)
-screen.innerHTML = prettyPrint(tree.root)
+// prettyPrint(tree.root)
+// tree.insertNode(9)
+// tree.insertNode(999)
+// prettyPrint(tree.root)
 main.appendChild(screen)
+
+// tree.deleteNode(tree.root,52)
+prettyPrint(tree.root)
+console.log(tree.breadthFirstValues())
+console.log(`inorder: ${tree.inorder()}`)
+console.log(`preorder: ${tree.preorder()}`)
+console.log(`postorder: ${tree.postorder()}`)
+console.log(`Height: ${getHeight(tree.root)}`)
