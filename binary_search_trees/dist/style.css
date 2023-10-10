@@ -1,0 +1,82 @@
+*{
+    font-family:'Courier New', Courier, monospace;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    padding:20px;
+}
+
+.main {
+    display: flex;
+    flex-grow: 1;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.entry {
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-container {
+    min-width: 300px;
+    font-size: 1.4rem;
+}
+
+.information-container {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 29vh;
+}
+
+.btn {
+    width: 80px;
+}
+
+.content, .tree-container {
+    flex-grow: 1;
+}
+
+.content, .tree-container, .information-container {
+    border: solid black 2px;
+    padding: 20px;
+}
+
+
+
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 30px;
+    background-color: white;
+}
+.footer-github {
+    display: flex;
+    align-items: center;
+}
+.footer-github>a {
+    text-decoration: none;
+    color:black;
+}
+.github-logo{
+    height:30px;
+}
