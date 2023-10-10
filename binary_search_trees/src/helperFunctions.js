@@ -49,4 +49,9 @@ function renderTree(arr) {
     treeContainer.textContent = prettyprint
 }
 
-export {getHeight,prettyHTML, prettyPrint, renderTree, randomArray}
+function formatArray(arr) {
+    const separator = /[,\s]+/
+    return arr.split(separator)
+}
+
+export {getHeight,prettyHTML, prettyPrint, renderTree, randomArray, formatArray}
