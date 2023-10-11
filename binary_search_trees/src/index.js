@@ -11,7 +11,11 @@ const deleteBtn = document.querySelector(".delete-btn")
 const depthBtn = document.querySelector(".height-btn")
 const heightResult = document.querySelector(".result-height")
 
-const
+const heightContainer = document.querySelector(".height")
+const breadthContainer = document.querySelector(".breadth")
+const preorderContainer = document.querySelector(".preorder")
+const inorderContainer = document.querySelector(".inorder")
+const postorderContainer = document.querySelector(".postorder")
 
 
 //initialize random array
@@ -58,7 +62,10 @@ depthBtn.addEventListener('click', (e) => {
 })
 
 //Information Display
-
-
+heightContainer.textContent = `Tree Height: ${getHeight(tree.root)}`
+breadthContainer.textContent = `Level Order: ${tree.breadthFirstValues()}`
+preorderContainer.textContent = `Pre-Order: ${tree.preorder()}`
+inorderContainer.textContent = `In-Order: ${tree.inorder()}`
+postorderContainer.textContent = `Post-Order: ${tree.postorder()}`
 
 

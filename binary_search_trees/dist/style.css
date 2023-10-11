@@ -42,6 +42,7 @@ header {
     flex-direction: column;
     gap: 6px;
     margin-bottom: 29vh;
+    font-weight: 600;
 }
 
 .btn {
