@@ -1,4 +1,4 @@
-import {getHeight, renderTree, randomArray, formatArray, findNode} from "./helperFunctions"
+import {getHeight, renderTree, randomArray, formatArray, findNode, refreshBalance} from "./helperFunctions"
 import {Tree} from "./Tree"
 
 const arrayInput = document.querySelector("[data-array]")
@@ -16,6 +16,7 @@ const breadthContainer = document.querySelector(".breadth")
 const preorderContainer = document.querySelector(".preorder")
 const inorderContainer = document.querySelector(".inorder")
 const postorderContainer = document.querySelector(".postorder")
+const balanceContainer = document.querySelector(".balance")
 
 
 //initialize random array
@@ -36,6 +37,7 @@ insertBtn.addEventListener('click', (e) => {
   tree.insertNode(insertInput.value)
   insertInput.value = ""
   renderTree(tree)
+  refreshBalance(tree)
 })
 
 //Delete Node 
@@ -44,6 +46,7 @@ deleteBtn.addEventListener('click', (e) => {
   tree.deleteNode(tree.root, deleteInput.value)
   deleteInput.value = ""
   renderTree(tree)
+  refreshBalance(tree)
 })
 
 //Find Depth
@@ -67,5 +70,7 @@ breadthContainer.textContent = `Level Order: ${tree.breadthFirstValues()}`
 preorderContainer.textContent = `Pre-Order: ${tree.preorder()}`
 inorderContainer.textContent = `In-Order: ${tree.inorder()}`
 postorderContainer.textContent = `Post-Order: ${tree.postorder()}`
+balanceContainer.textContent = `Tree is balanced: ${tree.isBalanced()}`
+
 
 

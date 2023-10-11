@@ -1,4 +1,3 @@
-import {Tree} from "./Tree"
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
     if (node === null) {
@@ -39,11 +38,11 @@ function getHeight(node) {
 }
 
 function randomArray() {
-    return Array.from({length: 10}, () => Math.floor(Math.random() * 100));
-};
+    return Array.from({length: 10}, () => Math.floor(Math.random() * 100))
+}
 
-const treeContainer = document.querySelector(".tree") 
 function renderTree(tree) {
+    const treeContainer = document.querySelector(".tree") 
     const prettyprint = prettyHTML(tree.root)
     treeContainer.textContent = prettyprint
 }
@@ -71,7 +70,20 @@ function findNode(root,key) {
       return rightResult
     }
     return null
-  }
+}
+
+function refreshBalance(tree) {
+  const balanceContainer = document.querySelector(".balance")
+  balanceContainer.textContent = `Tree is balanced: ${tree.isBalanced()}`
+}
+
   
 
-export {getHeight,prettyHTML, prettyPrint, renderTree, randomArray, formatArray,findNode}
+export {refreshBalance,
+        getHeight,
+        prettyHTML, 
+        prettyPrint, 
+        renderTree, 
+        randomArray, 
+        formatArray,
+        findNode}

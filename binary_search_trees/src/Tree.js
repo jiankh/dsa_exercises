@@ -1,4 +1,5 @@
 import {Node} from "./Node"
+import { getHeight } from "./helperFunctions";
 
 class Tree {
     constructor(arr) {
@@ -146,9 +147,11 @@ class Tree {
       const rightValues = this.postorder(root.right);
       return [ ...leftValues,  ...rightValues, root.data];
     }
-    
-  }
 
+    isBalanced(root=this.root) {
+      return Math.abs(getHeight(root.left) - getHeight(root.right)) < 2
+    }
+  }
 //     // A recursive function to insert a new key in BST
 //     function insertRec(root, key) {
 
@@ -169,4 +172,4 @@ class Tree {
 // }
 
 
-  export {Tree}
+export {Tree}
