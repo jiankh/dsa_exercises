@@ -35,10 +35,13 @@ arrayInput.addEventListener('change', (e) => {
 //Insert Node
 insertBtn.addEventListener('click', (e) => {
   e.preventDefault()
-  tree.insertNode(insertInput.value)
-  insertInput.value = ""
-  renderTree(tree)
-  refreshBalance(tree)
+  if (insertInput.value) {
+    tree.insertNode(insertInput.value)
+    insertInput.value = ""
+    renderTree(tree)
+    refreshBalance(tree)
+  } else {return}
+  
 })
 
 //Delete Node 
