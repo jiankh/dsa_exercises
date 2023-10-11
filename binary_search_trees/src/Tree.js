@@ -151,6 +151,13 @@ class Tree {
     isBalanced(root=this.root) {
       return Math.abs(getHeight(root.left) - getHeight(root.right)) < 2
     }
+
+    reBalance() {
+      const treeArray = this.breadthFirstValues()
+      const sortedArray = [...new Set(treeArray)].sort((a, b) => a - b)
+      return new Tree(sortedArray)
+    }
+
   }
 //     // A recursive function to insert a new key in BST
 //     function insertRec(root, key) {

@@ -17,6 +17,7 @@ const preorderContainer = document.querySelector(".preorder")
 const inorderContainer = document.querySelector(".inorder")
 const postorderContainer = document.querySelector(".postorder")
 const balanceContainer = document.querySelector(".balance")
+const reBalanceBtn = document.querySelector(".balance-btn")
 
 
 //initialize random array
@@ -63,6 +64,14 @@ depthBtn.addEventListener('click', (e) => {
     heightResult.textContent = "Node not found"
 }
 })
+
+//Re-balance tree
+reBalanceBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  tree = tree.reBalance() //reblance returns the new tree and we set it to our old var tree.
+  renderTree(tree)
+})
+
 
 //Information Display
 heightContainer.textContent = `Tree Height: ${getHeight(tree.root)}`
