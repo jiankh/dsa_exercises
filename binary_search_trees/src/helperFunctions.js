@@ -43,8 +43,7 @@ function randomArray() {
 };
 
 const treeContainer = document.querySelector(".tree") 
-function renderTree(arr) {
-    const tree = new Tree(arr)
+function renderTree(tree) {
     const prettyprint = prettyHTML(tree.root)
     treeContainer.textContent = prettyprint
 }
@@ -54,4 +53,25 @@ function formatArray(arr) {
     return arr.split(separator)
 }
 
-export {getHeight,prettyHTML, prettyPrint, renderTree, randomArray, formatArray}
+function findNode(root,key) {
+    const data = parseInt(key)
+  
+    if (root === null) {return null}
+    if (root.data === data) {
+      return root
+    }
+  
+    const leftResult = findNode(root.left, data)
+    const rightResult = findNode(root.right, data)
+  
+    if (leftResult) {
+      return leftResult 
+    }
+    if (rightResult) {
+      return rightResult
+    }
+    return null
+  }
+  
+
+export {getHeight,prettyHTML, prettyPrint, renderTree, randomArray, formatArray,findNode}
